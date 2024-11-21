@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Stocker - Stock Market Website Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+    <!-- 아이콘 폰트 스타일시트 -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- 라이브러리 스타일시트 -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- 맞춤형 부트스트랩 스타일시트 -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- 템플릿 스타일시트 -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- 로딩 스피너 시작 -->
+<div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+    <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+        <span class="sr-only">로딩 중...</span>
+    </div>
+</div>
+<!-- 로딩 스피너 끝 -->
+
+<!-- 상단바 시작 -->
+<div class="container-fluid topbar bg-light px-5 d-none d-lg-block">
+    <div class="row gx-0 align-items-center">
+        <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
+            <div class="d-flex flex-wrap">
+                <a href="#" class="text-muted small me-4"><i class="fas fa-map-marker-alt text-primary me-2"></i>위치 찾기</a>
+                <a href="tel:+01234567890" class="text-muted small me-4"><i class="fas fa-phone-alt text-primary me-2"></i>+01234567890</a>
+                <a href="mailto:example@gmail.com" class="text-muted small me-0"><i class="fas fa-envelope text-primary me-2"></i>Example@gmail.com</a>
+            </div>
+        </div>
+        <div class="col-lg-4 text-center text-lg-end">
+            <div class="d-inline-flex align-items-center" style="height: 45px;">
+                <a href="#"><small class="me-3 text-dark"><i class="fa fa-user text-primary me-2"></i>회원가입</small></a>
+                <a href="#"><small class="me-3 text-dark"><i class="fa fa-sign-in-alt text-primary me-2"></i>로그인</small></a>
+                <div class="dropdown">
+                    <a href="#" class="dropdown-toggle text-dark" data-bs-toggle="dropdown"><small><i class="fa fa-home text-primary me-2"></i> 내 대시보드</small></a>
+                    <div class="dropdown-menu rounded">
+                        <a href="#" class="dropdown-item"><i class="fas fa-user-alt me-2"></i> 내 프로필</a>
+                        <a href="#" class="dropdown-item"><i class="fas fa-comment-alt me-2"></i> 받은 메시지</a>
+                        <a href="#" class="dropdown-item"><i class="fas fa-bell me-2"></i> 알림</a>
+                        <a href="#" class="dropdown-item"><i class="fas fa-cog me-2"></i> 계정 설정</a>
+                        <a href="#" class="dropdown-item"><i class="fas fa-power-off me-2"></i> 로그아웃</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 상단바 끝 -->
+
+<!-- 네비게이션 바와 히어로 섹션 시작 -->
+<div class="container-fluid position-relative p-0">
+    <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+        <a href="/index" class="navbar-brand p-0">
+            <h1 class="text-primary"><i class="fas fa-search-dollar me-3"></i>Stocker</h1>
+            <!-- <img src="img/logo.png" alt="로고"> -->
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="fa fa-bars"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto py-0">
+                <a href="index.html" class="nav-item nav-link">홈</a>
+                <a href="about.html" class="nav-item nav-link">소개</a>
+                <a href="service.html" class="nav-item nav-link">서비스</a>
+                <a href="blog.html" class="nav-item nav-link">블로그</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link active" data-bs-toggle="dropdown">
+                        <span class="dropdown-toggle">페이지</span>
+                    </a>
+                    <div class="dropdown-menu m-0">
+                        <a href="feature.html" class="dropdown-item">기능</a>
+                        <a href="team.html" class="dropdown-item">팀</a>
+                        <a href="testimonial.html" class="dropdown-item">고객 리뷰</a>
+                        <a href="offer.html" class="dropdown-item">제안</a>
+                        <a href="FAQ.html" class="dropdown-item">FAQ</a>
+                        <a href="404.html" class="dropdown-item active">404 페이지</a>
+                    </div>
+                </div>
+                <a href="contact.html" class="nav-item nav-link">문의하기</a>
+            </div>
+            <a href="#" class="btn btn-primary rounded-pill py-2 px-4 my-3 my-lg-0 flex-shrink-0">시작하기</a>
+        </div>
+    </nav>
+
+    <!-- 헤더 시작 -->
+    <div class="container-fluid bg-breadcrumb">
+        <div class="container text-center py-5" style="max-width: 900px;">
+            <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">404 페이지</h4>
+            <ol class="breadcrumb d-flex justify-content-center mb-0 wow fadeInDown" data-wow-delay="0.3s">
+                <li class="breadcrumb-item"><a href="admin.html">홈</a></li>
+                <li class="breadcrumb-item"><a href="#">페이지</a></li>
+                <li class="breadcrumb-item active text-primary">404 페이지</li>
+            </ol>
+        </div>
+    </div>
+    <!-- 헤더 끝 -->
+</div>
+<!-- 네비게이션 바와 히어로 섹션 끝 -->
+
+<!-- 404 시작 -->
+<div class="container-fluid bg-light py-5">
+    <div class="container py-5 text-center">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
+                <i class="far fa-frown-open display-1 text-primary mb-4" style="width: 80px; height: 80px;"></i>
+                <h1 class="display-1">404</h1>
+                <h1 class="mb-4">페이지를 찾을 수 없습니다</h1>
+                <p class="mb-4">죄송합니다, 요청하신 페이지가 존재하지 않습니다. 홈 페이지로 돌아가거나 검색을 시도해 보세요.</p>
+                <a class="btn btn-primary rounded-pill py-3 px-5" href="admin.html">홈으로 돌아가기</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 404 끝 -->
+
+<!-- 푸터 시작 -->
+<div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
+    <div class="container py-5 border-start-0 border-end-0" style="border: 1px solid; border-color: rgb(255, 255, 255, 0.08);">
+        <div class="row g-5">
+            <div class="col-md-6 col-lg-6 col-xl-4">
+                <div class="footer-item">
+                    <a href="admin.html" class="p-0">
+                        <h1 class="text-primary"><i class="fas fa-search-dollar me-3"></i>Stocker</h1>
+                    </a>
+                    <p class="mt-3 mb-2">혁신적인 투자와 분석을 위한 최고의 선택, Stocker와 함께하세요.</p>
+                    <a class="btn btn-sm btn-primary rounded-circle text-center me-2" href="#"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-sm btn-primary rounded-circle text-center me-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-sm btn-primary rounded-circle text-center me-2" href="#"><i class="fab fa-youtube"></i></a>
+                    <a class="btn btn-sm btn-primary rounded-circle text-center me-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 푸터 끝 -->
+
+<!-- 저작권 표시 시작 -->
+<div class="container-fluid text-white text-center py-4" style="background-color: #222;">
+    <p class="mb-0">저작권 © <a href="#">Stocker</a>. 모든 권리 보유. 디자인 제공: <a href="https://htmlcodex.com" target="_blank">HTML Codex</a>.</p>
+</div>
+<!-- 저작권 표시 끝 -->
+
+<!-- 맨 위로 가기 버튼 -->
+<a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="fas fa-angle-double-up"></i></a>
+
+<!-- JavaScript 라이브러리 -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="lib/wow/wow.min.js"></script>
+<script src="lib/easing/easing.min.js"></script>
+<script src="lib/waypoints/waypoints.min.js"></script>
+<script src="lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="lib/counterup/counterup.min.js"></script>
+<script src="lib/parallax/parallax.min.js"></script>
+<script src="lib/lightbox/js/lightbox.min.js"></script>
+
+<!-- 템플릿 JavaScript -->
+<script src="js/main.js"></script>
+</body>
+</html>

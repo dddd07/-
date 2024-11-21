@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8"> <!-- 문자 인코딩을 UTF-8로 설정 -->
+  <title>게시글 상세보기</title> <!-- 브라우저 탭에 표시될 페이지 제목 설정 -->
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"> <!-- 반응형 웹을 위한 뷰포트 설정 -->
+  <meta content="" name="keywords"> <!-- 키워드 메타 태그 (SEO용) -->
+  <meta content="" name="description"> <!-- 페이지 설명 메타 태그 (SEO용) -->
+  <link rel="shortcut icon" href="/img/favicon.png" type="image/x-icon">
+  <!-- Google Web Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"> <!-- Google Fonts 서버에 사전 연결 -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <!-- Google Fonts의 데이터를 사전 로딩 -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet"> <!-- Google Fonts 로드 -->
+
+  <!-- Icon Font Stylesheet -->
+<!--  <link rel="stylesheet" href="/https://use.fontawesome.com/releases/v5.15.4/css/all.css"/> &lt;!&ndash; Font Awesome 아이콘 로드 &ndash;&gt;-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet"> <!-- Bootstrap Icons 로드 -->
+
+  <!-- Libraries Stylesheet -->
+<!--  <link href="lib/animate/animate.min.css" rel="stylesheet"> &lt;!&ndash; 애니메이션 라이브러리 스타일시트 로드 &ndash;&gt;-->
+  <link href="/lib/lightbox/css/lightbox.min.css" rel="stylesheet"> <!-- Lightbox 스타일시트 로드 -->
+  <link href="/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet"> <!-- Owl Carousel 스타일시트 로드 -->
+
+  <!-- Customized Bootstrap Stylesheet -->
+  <link href="/css/bootstrap.min.css" rel="stylesheet"> <!-- 커스터마이징된 Bootstrap 스타일시트 로드 -->
+
+  <!-- Template Stylesheet -->
+  <link href="/css/style.css" rel="stylesheet"> <!-- 템플릿 스타일시트 로드 -->
+
+
+</head>
+
+<body>
+
+<!-- Header Section -->
+<div th:insert="~{header}"></div> <!-- Thymeleaf 템플릿 엔진을 사용하여 header 파일 삽입 -->
+
+<!-- 게시글 상세보기 영역 -->
+<div id="modiForm1"> <!-- 게시글 상세보기 테이블을 감싸는 div -->
+  <table> <!-- 게시글 상세 정보 출력 테이블 -->
+    <tr>
+      <th>번호</th> <!-- 게시글 번호 항목 -->
+      <td>[[${view.pNum}]]</td> <!-- 번호 값 출력 -->
+    </tr>
+    <tr>
+      <th>작성자</th> <!-- 작성자 항목 -->
+      <td>[[${view.SId}]]</td> <!-- 작성자 값 출력 -->
+    </tr>
+    <tr>
+      <th>제목</th> <!-- 제목 항목 -->
+      <td>[[${view.pTitle}]]</td> <!-- 제목 값 출력 -->
+    </tr>
+    <tr>
+      <th>내용</th> <!-- 내용 항목 -->
+      <td>[[${view.pContent}]]</td> <!-- 내용 값 출력 -->
+    </tr>
+    <tr>
+      <th>작성일</th> <!-- 작성일 항목 -->
+      <td>[[${view.Create_At}]]</td> <!-- 작성일 값 출력 -->
+    </tr>
+    <tr>
+      <th>조회수</th> <!-- 조회수 항목 -->
+      <td>[[${view.SViews}]]</td> <!-- 조회수 값 출력 -->
+    </tr>
+    <tr>
+      <th colspan="2"> <!-- 두 칸을 합쳐서 "수정"과 "삭제" 버튼 배치 -->
+        <button id="modify">수정</button> <!-- 게시글 수정 버튼 -->
+        <button id="delete">삭제</button> <!-- 게시글 삭제 버튼 -->
+      </th>
+    </tr>
+  </table>
+</div>
+
+<!-- 댓글 작성 -->
+
+<div th:if="${session.loginId ne null}" id="cmtWrite">
+  <textarea rows="3" cols="30" id="CContent"></textarea>
+  <button id="writeBtn">댓글 입력</button>
+</div>
+
+<!-- 댓글 목록 -->
+<div id="cmtArea"></div>
+
+
+
+<!--&lt;!&ndash; 게시글 수정 폼 영역 &ndash;&gt;-->
+<!--<div id="modiForm2"> &lt;!&ndash; 수정 폼을 감싸는 div &ndash;&gt;-->
+<!--  <h2>게시글 수정</h2> &lt;!&ndash; 수정 페이지 제목 &ndash;&gt;-->
+
+<!--  <form action="/pModify" method="post" enctype="multipart/form-data"> &lt;!&ndash; 수정 제출 폼, pModify로 POST 요청 전송 &ndash;&gt;-->
+<!--    <table> &lt;!&ndash; 수정 입력 폼 테이블 &ndash;&gt;-->
+<!--      <tr>-->
+<!--        <th>작성자</th> &lt;!&ndash; 작성자 항목 &ndash;&gt;-->
+<!--        <td><input type="text" name="pWriter" th:placeholder="${view.SId}"/></td> &lt;!&ndash; 작성자 입력 필드, 기존 작성자 값 기본값으로 제공 &ndash;&gt;-->
+<!--      </tr>-->
+
+<!--      <tr>-->
+<!--        <th>제목</th> &lt;!&ndash; 제목 항목 &ndash;&gt;-->
+<!--        <td><input type="text" name="pTitle" th:placeholder="${view.PTitle}"/></td> &lt;!&ndash; 제목 입력 필드, 기존 제목 값 기본값으로 제공 &ndash;&gt;-->
+<!--      </tr>-->
+
+<!--      <tr>-->
+<!--        <th>내용</th> &lt;!&ndash; 내용 항목 &ndash;&gt;-->
+<!--        <td>-->
+<!--          <textarea name="pContent" rows="20" cols="40"> &lt;!&ndash; 내용 입력을 위한 textarea, 기존 내용 값 기본값으로 제공 &ndash;&gt;-->
+<!--            [[${view.pContent}]]-->
+<!--          </textarea>-->
+<!--        </td>-->
+<!--      </tr>-->
+
+<!--      <tr>-->
+<!--        <th colspan="2">-->
+<!--          <input type="hidden" name="pNum" th:value="${view.pNum}"/> &lt;!&ndash; 게시글 번호를 숨겨서 폼에 전달 &ndash;&gt;-->
+<!--          <input type="submit" value="수정" /> &lt;!&ndash; 수정 제출 버튼 &ndash;&gt;-->
+<!--        </th>-->
+<!--      </tr>-->
+<!--    </table>-->
+<!--  </form>-->
+<!--</div>-->
+
+</body>
+<!--푸터시작-->
+<div th:replace="footer :: footer"></div>
+<!--    푸터끝-->
+
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script> <!-- jQuery 라이브러리 로드 -->
+<script>
+
+  $('#modiForm2').hide(); <!-- 수정 폼을 처음에 숨김 -->
+
+  $('#modify').click(()=>{ <!-- 수정 버튼 클릭 시 -->
+    $('#modiForm2').show(); <!-- 수정 폼 표시 -->
+    $('#modiForm1').hide(); <!-- 상세보기 폼 숨기기 -->
+  });
+
+  $('#delete').click(()=>{ <!-- 삭제 버튼 클릭 시 -->
+    if(confirm('정말 삭제하시겠습니까?')){ <!-- 삭제 확인을 위한 알림창 표시 -->
+      location.href = `/pDelete?pNum=[[${view.pNum}]]`; <!-- 삭제 처리 요청을 위해 pDelete로 리다이렉트 -->
+    }
+  });
+
+</script>
+<script>
+
+  $(()=>{
+    $('#writeBtn').click(()=>{
+      if(confirm('댓글을 입력하시겠습니까?')){
+        $.ajax({
+          type: "POST",
+          url : "/cWrite",
+          data : {
+            "PNum" : '[[${view.PNum}]]',
+            "SId" : '[[${session.loginId}]]',
+            "Content" : $('#Content').val()
+          },
+          dataType: "json",
+          success : (list) => {
+            $('#Content').val(""); // 댓글입력창 초기화
+            cmtList(list);      // 댓글 목록
+          },
+          error : ()=>{
+            alert('cWrite 통신 실패!');
+          }
+        });
+      }
+    });
+
+    $('#modiForm2').hide();
+
+    $('#modify').click(() => {
+      $('#modiForm2').show();
+      $('#modiForm1').hide();
+    });
+
+    $('#delete').click(() => {
+      if (confirm('정말 삭제하시겠습니까?')) {
+        location.href = `/bDelete?bNum=[[${view.BNum}]]&bFileName=[[${view.BFileName}]]`;
+      }
+    });
+
+    $('#BFile').on('change', function (event) {
+      let file = event.target.files[0];
+      let reader = new FileReader();
+
+      reader.onload = function (e) {
+        $('#preImage').attr('src', e.target.result);
+      }
+
+      reader.readAsDataURL(file);
+    });
+
+    function cmtList(list){
+      let output = "";
+      output +=
+              `<table>
+                    <tr>
+                        <th>작성자</th>
+                        <th>내용</th>
+                        <th>작성일</th>
+                        <th>수정</th>
+                        <th>삭제</th>
+                    </tr>
+                `;
+
+      for(let i in list){
+        output +=
+                `<tr>
+                        <td>${list[i].sid}</td>
+                        <td>${list[i].content}</td>
+                        <td>${list[i].created_At.substring(0, 10)}</td>
+                    `;
+
+        if('[[${session.loginId}]]' == list[i].sid){
+          output +=
+                  `
+                        <td><button class="cmodify" value="${list[i].cnum}">수정</button>
+                        <td><button class="cdelete" value="${list[i].cnum}">삭제</button>
+                        `;
+        } else {
+          output += `<td></td><td></td>`;
+        }
+        output += `</tr>`;
+      }
+
+      output += `</table>`;
+
+      $('#cmtArea').html(output);
+
+      // 수정 삭제는 cmtList 함수 안에서 진행
+      $('.cmodify').click((e)=>{
+        // console.log("CNum : " + e.target.value);
+        $.ajax({
+          type : "POST",
+          url : "/SID",
+          data : {
+            "CNum" : e.target.value,
+            "PNum" :' [[${view.PNum}]]',
+            "Content" : $('#Content').val(),
+            "SId" : `[[${session.loginId}]]`
+          },
+          dataType : "json",
+          success : (list) => {
+            $('#CContent').val("");
+            cmtList(list);
+          },
+          error : ()=>{
+            alert('cModify 통신 실패!');
+          }
+        });
+      });
+
+      $('.cdelete').click((e)=>{
+        if(confirm('댓글을 삭제하시겠습니까?')){
+          $.ajax({
+            type : "POST",
+            url : "/cDelete",
+            data : {
+              "CNum" : e.target.value,
+              "PNum" : '[[${view.PNum}]]'
+            },
+            dataType : "json",
+            success : (list) => {
+              cmtList(list);
+            },
+            error : ()=>{
+              alert('cDelete 통신 실패!');
+            }
+          });
+        }
+      });
+
+    }
+
+    $.ajax({
+      type : "POST",
+      url : "/cList",
+      data : { "PNum" : '[[${view.PNum}]]' },
+      dataType : "json",
+      success : (list) => {
+        console.log(list);
+        cmtList(list);
+      },
+      error : ()=>{
+        alert('cList 통신 실패!');
+      }
+    });
+
+
+  });
+</script>
+</html>

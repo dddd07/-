@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <title>다다답 - 커뮤니티</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.goo gleapis.com/css2?family=Inter:wght@100..900&family=Roboto:wght@400;500;700;900&display=swap"
+          rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link rel="stylesheet" href="lib/animate/animate.min.css"/>
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/index.css" rel="stylesheet">
+</head>
+
+<body>
+<!-- Header Section -->
+<div th:insert="~{header}"></div>
+
+<!-- 첫번째 문단 시작 -->
+<div class="container-fluid about py-5">
+    <div class="container py-5">
+        <div class="row g-5 align-items-center justify-content-between">
+            <!-- 첫 번째 섹션 -->
+            <div class="col-xl-4 wow fadeInLeft" data-wow-delay="0.2s">
+                <div>
+                    <h4 class="text-primary">다다답</h4>
+                    <h1 class="display-5 mb-4">게시글 작성</h1>
+                    <div class="row g-4">
+                        <div class="col-md-12 col-lg-12 col-xl-12">
+                            <div class="d-flex">
+                                <div><i class="fas fa-lightbulb fa-3x text-primary"></i></div>
+                                <div class="ms-4">
+                                    <h4>질문 등록</h4>
+                                    <p>게시판에 질문을 남기고 답변을 받아보세요.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-lg-12 col-xl-12 mt-4">
+                            <div class="d-flex">
+                                <div><i class="bi bi-bookmark-heart-fill fa-3x text-primary"></i></div>
+                                <div class="ms-4">
+                                    <h4>답변 공유</h4>
+                                    <p>다양한 주제의 질문을 읽고 답변을 달아보세요.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 mt-4">
+                            <a class="btn btn-primary rounded-pill py-3 px-5 flex-shrink-0" id="write">게시글 작성</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 두 번째 섹션 -->
+            <div class="col-xl-4 wow fadeInRight" data-wow-delay="0.2s">
+                <div>
+                    <h4 class="text-primary">다다답</h4>
+                    <h1 class="display-5 mb-4">익명의 채팅방</h1>
+                    <div class="row g-4">
+                        <div class="col-md-12 col-lg-12 col-xl-12">
+                            <div class="d-flex">
+                                <div><i class="fas fa-lightbulb fa-3x text-primary"></i></div>
+                                <div class="ms-4">
+                                    <h4>익명성 보장</h4>
+                                    <p>로그인 없이 실시간 익명 채팅에 참여해보세요.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-lg-12 col-xl-12 mt-4">
+                            <div class="d-flex">
+                                <div><i class="bi bi-bookmark-heart-fill fa-3x text-primary"></i></div>
+                                <div class="ms-4">
+                                    <h4>매너 필수 지참</h4>
+                                    <p>남을 비방하거나 악의적인 글을 작성시 삭제 및 자동 퇴장됩니다.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 mt-4">
+                            <a class="btn btn-primary rounded-pill py-3 px-5 flex-shrink-0">채팅방 입장</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 세 번째 섹션 -->
+            <div class="col-xl-4 wow fadeInRight" data-wow-delay="0.2s">
+                <div>
+                    <h4 class="text-primary">다다답</h4>
+                    <h1 class="display-5 mb-4">Entertain</h1>
+                    <div class="row g-4">
+                        <div class="col-md-12 col-lg-12 col-xl-12">
+                            <div class="d-flex">
+                                <div><i class="fas fa-lightbulb fa-3x text-primary"></i></div>
+                                <div class="ms-4">
+                                    <h4>게임/심리/MBTI테스트</h4>
+                                    <p>질문 기다리랴 답글 달랴 지친 순간을 위한....</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-lg-12 col-xl-12 mt-4">
+                            <div class="d-flex">
+                                <div><i class="bi bi-bookmark-heart-fill fa-3x text-primary"></i></div>
+                                <div class="ms-4">
+                                    <h4>즐거움의 시작!</h4>
+                                    <p>다양한 심리테스트와 게임들을 제공합니다.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 mt-4">
+                            <a class="btn btn-primary rounded-pill py-3 px-5 flex-shrink-0" id="blog">테스트 하러가기</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 첫번째 문단 끝-->
+
+<!-- 카테고리 -->
+<div>
+    <div class="container d-flex justify-content-center">
+        <div class="row g-4 justify-content-center">
+
+            <div style="padding-top: 200px">
+                <!-- 한 줄에 4개의 항목을 배치하기 위해 col-lg-3 사용 -->
+                <div class="d-flex flex-wrap justify-content-center">
+                    <div class="col-md-6 col-lg-3 wow fadeInUp" data-wow-delay="0.2s"> <!-- col-lg-3으로 수정 -->
+                        <div class="service-item">
+                            <div class="service-img">
+                                <img src="img/교육.jpg" class="img-fluid service-img-fixed" alt="Image">
+                            </div>
+                            <div class="rounded-bottom p-4">
+                                <a href="#" class="h4 d-inline-block mb-4">교육, 학문</a>
+                                <br/>
+                                <a class="btn btn-primary rounded-pill py-2 px-4" id="education">게시판 작성</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 wow fadeInUp" data-wow-delay="0.4s"> <!-- col-lg-3으로 수정 -->
+                        <div class="service-item">
+                            <div class="service-img">
+                                <img src="img/컴퓨터통신.jpg" class="img-fluid service-img-fixed" alt="Image">
+                            </div>
+                            <div class="rounded-bottom p-4">
+                                <a href="#" class="h4 d-inline-block mb-4">컴퓨터통신</a>
+                                <br/>
+                                <a class="btn btn-primary rounded-pill py-2 px-4" id="computer">게시판 작성</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 wow fadeInUp" data-wow-delay="0.6s"> <!-- col-lg-3으로 수정 -->
+                        <div class="service-item">
+                            <div class="service-img">
+                                <img src="img/게임.jpg" class="img-fluid service-img-fixed" alt="Image">
+                            </div>
+                            <div class="rounded-bottom p-4">
+                                <a href="#" class="h4 d-inline-block mb-4">게임</a>
+                                <br/>
+                                <a class="btn btn-primary rounded-pill py-2 px-4" id="game">게시판 작성</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 wow fadeInUp" data-wow-delay="0.2s"> <!-- col-lg-3으로 수정 -->
+                        <div class="service-item">
+                            <div class="service-img">
+                                <img src="img/엔터테인먼트.jpg" class="img-fluid service-img-fixed" alt="Image">
+                            </div>
+                            <div class="rounded-bottom p-4">
+                                <a href="#" class="h4 d-inline-block mb-4">엔터테인먼트</a>
+                                <br/>
+                                <a class="btn btn-primary rounded-pill py-2 px-4" id="entertainment">게시판 작성</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="padding-top: 200px">
+                <!-- 한 줄에 4개의 항목을 배치하기 위해 col-lg-3 사용 -->
+                <div class="d-flex flex-wrap justify-content-center">
+                    <div class="col-md-6 col-lg-3 wow fadeInUp" data-wow-delay="0.2s"> <!-- col-lg-3으로 수정 -->
+                        <div class="service-item">
+                            <div class="service-img">
+                                <img src="img/생활.jpg" class="img-fluid service-img-fixed" alt="Image">
+                            </div>
+                            <div class="rounded-bottom p-4">
+                                <a href="#" class="h4 d-inline-block mb-4">생활</a>
+                                <br/>
+                                <a class="btn btn-primary rounded-pill py-2 px-4" id="life">게시판 작성</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 wow fadeInUp" data-wow-delay="0.4s"> <!-- col-lg-3으로 수정 -->
+                        <div class="service-item">
+                            <div class="service-img">
+                                <img src="img/건강.jpg" class="img-fluid service-img-fixed" alt="Image">
+                            </div>
+                            <div class="rounded-bottom p-4">
+                                <a href="#" class="h4 d-inline-block mb-4">건강</a>
+                                <br/>
+                                <a class="btn btn-primary rounded-pill py-2 px-4" id="health">게시판 작성</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 wow fadeInUp" data-wow-delay="0.6s"> <!-- col-lg-3으로 수정 -->
+                        <div class="service-item">
+                            <div class="service-img">
+                                <img src="img/사회.jpg" class="img-fluid service-img-fixed" alt="Image">
+                            </div>
+                            <div class="rounded-bottom p-4">
+                                <a href="#" class="h4 d-inline-block mb-4">사회, 정치</a>
+                                <br/>
+                                <a class="btn btn-primary rounded-pill py-2 px-4" id="politic">게시판 작성</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 wow fadeInUp" data-wow-delay="0.2s"> <!-- col-lg-3으로 수정 -->
+                        <div class="service-item">
+                            <div class="service-img">
+                                <img src="img/금융.jpg" class="img-fluid service-img-fixed" alt="Image">
+                            </div>
+                            <div class="rounded-bottom p-4">
+                                <a href="#" class="h4 d-inline-block mb-4">경제</a>
+                                <br/>
+                                <a class="btn btn-primary rounded-pill py-2 px-4" id="economy">게시판 작성</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 필요시 다른 항목들과 함께 정렬되는 것을 고려하여 col-lg-3으로 설정 -->
+            <div style="padding-top: 200px">
+                <!-- 한 줄에 4개의 항목을 배치하기 위해 col-lg-3 사용 -->
+                <div class="d-flex flex-wrap justify-content-center">
+                    <div class="col-md-6 col-lg-3 wow fadeInUp" data-wow-delay="0.2s"> <!-- col-lg-3으로 수정 -->
+                        <div class="service-item">
+                            <div class="service-img">
+                                <img src="img/여행.jpg" class="img-fluid service-img-fixed" alt="Image">
+                            </div>
+                            <div class="rounded-bottom p-4">
+                                <a href="#" class="h4 d-inline-block mb-4">여행</a>
+                                <br/>
+                                <a class="btn btn-primary rounded-pill py-2 px-4" id="travel">게시판 작성</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 wow fadeInUp" data-wow-delay="0.4s"> <!-- col-lg-3으로 수정 -->
+                        <div class="service-item">
+                            <div class="service-img">
+                                <img src="img/스포츠.jpg" class="img-fluid service-img-fixed" alt="Image">
+                            </div>
+                            <div class="rounded-bottom p-4">
+                                <a href="#" class="h4 d-inline-block mb-4">스포츠, 레저</a>
+                                <br/>
+                                <a class="btn btn-primary rounded-pill py-2 px-4" id="sport">게시판 작성</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 wow fadeInUp" data-wow-delay="0.6s"> <!-- col-lg-3으로 수정 -->
+                        <div class="service-item">
+                            <div class="service-img">
+                                <img src="img/쇼핑.jpg" class="img-fluid service-img-fixed" alt="Image">
+                            </div>
+                            <div class="rounded-bottom p-4">
+                                <a href="#" class="h4 d-inline-block mb-4">쇼핑</a>
+                                <br/>
+                                <a class="btn btn-primary rounded-pill py-2 px-4" id="shopping">게시판 작성</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 wow fadeInUp" data-wow-delay="0.2s"> <!-- col-lg-3으로 수정 -->
+                        <div class="service-item">
+                            <div class="service-img">
+                                <img src="img/고민.jpg" class="img-fluid service-img-fixed" alt="Image">
+                            </div>
+                            <div class="rounded-bottom p-4">
+                                <a href="#" class="h4 d-inline-block mb-4">고민Q&A</a>
+                                <br/>
+                                <a class="btn btn-primary rounded-pill py-2 px-4" id="question">게시판 작성</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 카테고리 끝-->
+
+
+
+<script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script>
+    $('#write').click(() => {
+        location.href = "pWriteForm";
+    });
+
+    $('#list').click(() => {
+        location.href = "pList";
+    });
+    $('#education').click(() => {
+        location.href = "wEducation";
+    });
+
+    $('#entertainment').click(() => {
+        location.href = "wEntertainment";
+    });
+    $('#life').click(() => {
+        location.href = "wLife";
+    });
+
+    $('#economy').click(() => {
+        location.href = "wEconomy";
+    });
+    $('#sport').click(() => {
+        location.href = "wSport";
+    });
+
+    $('#shopping').click(() => {
+        location.href = "wShopping";
+    });
+    $('#game').click(() => {
+        location.href = "wGame";
+    });
+
+    $('#travel').click(() => {
+        location.href = "wTravel";
+    });
+    $('#question').click(() => {
+        location.href = "wQuestion";
+    });
+    $('#computer').click(() => {
+        location.href = "wComputer";
+    });
+    $('#health').click(() => {
+        location.href = "wHealth";
+    });
+    $('#politic').click(() => {
+        location.href = "wPolitic";
+    });
+    $('#blog').click(() => {
+        location.href = "blog";
+    });
+</script>
+<!-- Services End -->
+
+
+
+
+
+
+
+
+<!-- Footer Start -->
+<div th:replace="footer :: footer"></div>
+<!-- Footer End -->
+
+<!-- Copyright Start -->
+<div class="container-fluid copyright py-4">
+    <div class="container">
+        <div class="row g-4 align-items-center">
+            <div class="col-md-6 text-center text-md-start mb-md-0">
+                    <span class="text-body"><a href="#" class="border-bottom text-white"><i
+                            class="fas fa-copyright text-light me-2"></i>Your Site Name</a>, All right reserved.</span>
+            </div>
+            <div class="col-md-6 text-center text-md-end text-body">
+                <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
+                <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
+                <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
+                Designed By <a class="border-bottom text-white" href="https://htmlcodex.com">HTML Codex</a>
+                Distributed By <a class="border-bottom text-white" href="https://themewagon.com">ThemeWagon</a>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!-- Copyright End -->
+</body>
+
+<!-- Back to Top -->
+<a href="#" class="btn btn-primary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>
+
+
+<!-- JavaScript Libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="lib/wow/wow.min.js"></script>
+<script src="lib/easing/easing.min.js"></script>
+<script src="lib/waypoints/waypoints.min.js"></script>
+<script src="lib/counterup/counterup.min.js"></script>
+<script src="lib/lightbox/js/lightbox.min.js"></script>
+<script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+
+<!-- Template Javascript -->
+<script src="/js/main.js"></script>
+
+<script>
+    $('#join').click(() => {
+        location.href = "/mJoinForm";
+    });
+
+    $('#login').click(() => {
+        location.href = "/mLoginForm";
+    });
+
+    $('#logout').click(() => {
+        location.href = "/mLogout";
+    });
+
+    // 이거 추가함.
+    $('#myProfile').click(() => {
+        location.href = "/myProfile";
+    });
+</script>
+
+
+</html>

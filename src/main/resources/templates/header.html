@@ -1,0 +1,111 @@
+
+<!-- header.html -->
+<header>
+<!--   Spinner Start-->
+<!--  <div id="spinner"-->
+<!--       class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">-->
+<!--    <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">-->
+<!--      <span class="sr-only">Loading...</span>-->
+<!--    </div>-->
+<!--  </div>-->
+  <!-- Spinner End -->
+
+  <!-- Topbar Start -->
+  <div class="col-lg-22 text-center text-lg-end">
+    <div class="d-inline-flex align-items-center" style="height: 45px;">
+
+      <div th:if="${session.loginId eq null}">
+        <a href="/register"><small class="me-3 text-dark"><i
+                class="fa fa-user text-primary me-2"></i>회원가입</small></a>
+        <a href="/login"><small class="me-3 text-dark"><i
+                class="fa fa-sign-in-alt text-primary me-2"></i>로그인</small></a>
+      </div>
+
+      <div th:if="${session.loginId ne null}">
+        <div class="dropdown">
+          <!-- '내 프로필 바로가기' 항목 -->
+          <button id="myProfile" class="dropdown-item"><i class="fas fa-user-alt me-2"></i>내 프로필가기</button>
+          <!-- 나머지 항목들, 기본적으로 숨김 -->
+          <div class="dropdown-menu rounded">
+            <a href="/postView" class="dropdown-item"><i class="fas fa-comment-alt me-2"></i>나의 질문</a>
+            <a href="/answerView" class="dropdown-item"><i class="fas fa-comment-alt me-2"></i>나의 답변</a>
+            <a href="/admin" class="dropdown-item" th:if="${session.Is_Admin == 1}">
+              <i class="fas fa-cog me-2"></i> 관리자 홈페이지
+            </a>
+
+            <a href="/mLogout" class="dropdown-item"><i class="fas fa-power-off me-2"></i>로그아웃</a>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+  <!-- Topbar End -->
+
+  <!-- Navbar & Hero Start -->
+  <div class="container-fluid position-relative p-0">
+    <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+      <a href="/index" class="navbar-brand p-0">
+        <!--        <h1 class="text-primary"><i class="fas fa-search-dollar me-3"></i>다다답</h1>-->
+        <img src="/img/logo1.png" alt="Logo" class="logo">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="fa fa-bars"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto py-0">
+          <a href="/index" class="nav-item nav-link active">메인</a>
+          <a href="/about" class="nav-item nav-link">홈페이지소개</a>
+          <a href="/service" class="nav-item nav-link">게시판</a>
+          <a href="/blog" class="nav-item nav-link">유머 공간</a>
+          <div class="nav-item dropdown">
+            <a href="#" class="nav-link" data-bs-toggle="dropdown">
+              <span class="dropdown-toggle">카테고리</span>
+            </a>
+            <div class="dropdown-menu m-0">
+              <a href="/feature" class="dropdown-item">카테고리1</a>
+              <a href="/testimonial" class="dropdown-item">카테고리2</a>
+              <a href="/offer" class="dropdown-item">카테고리3</a>
+              <a href="/404" class="dropdown-item">카테고리4</a>
+              <a href="/FAQ" class="dropdown-item">카테고리5</a>
+              <a href="/team" class="dropdown-item">카테고리6</a>
+            </div>
+          </div>
+        </div>
+        <a href="#" class="btn btn-primary rounded-pill py-2 px-4 my-3 my-lg-0 flex-shrink-0">게시글 작성</a>
+      </div>
+    </nav>
+
+    <!-- Carousel Start -->
+    <div class="header-carousel owl-carousel">
+      <div class="header-carousel-item">
+        <img src="/img/carousel-1.jpg" class="img-fluid w-100" alt="Image">
+        <div class="carousel-caption">
+          <div class="container">
+            <div class="row gy-0 gx-5">
+              <div class="col-lg-0 col-xl-5"></div>
+              <div class="col-xl-7 animated fadeInLeft">
+                <div class="text-sm-center text-md-end">
+                  <h4 class="text-primary text-uppercase fw-bold mb-4">다다답에 오신걸 환영합니다.</h4>
+                  <h1 class="display-4 text-uppercase text-white mb-4">게시글을 작성해보세요</h1>
+                  <p class="mb-5 fs-5">다양한 기능들이 있습니다.</p>
+                  <div class="d-flex justify-content-center justify-content-md-end flex-shrink-0 mb-4">
+                    <a class="btn btn-light rounded-pill py-3 px-4 px-md-5 me-2" href="/pWriteForm"><i
+                            class="fas fa-play-circle me-2"></i>게시글 작성</a>
+                    <a class="btn btn-primary rounded-pill py-3 px-4 px-md-5 ms-2" href="#">링크 페이지</a>
+                  </div>
+                  <div class="d-flex align-items-center justify-content-center justify-content-md-end">
+                    <div class="d-flex justify-content-end ms-2"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Carousel End -->
+    </div>
+    <!-- Navbar & Hero End -->
+  </div>
+</header>

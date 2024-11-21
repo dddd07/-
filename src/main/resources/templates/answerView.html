@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <title>다다답 - 커뮤니티</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto:wght@400;500;700;900&display=swap"
+          rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link rel="stylesheet" href="lib/animate/animate.min.css"/>
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+<!-- Header Section -->
+<div th:insert="~{header}"></div>
+
+<!-- 여백을 위한 부분 Start -->
+<div class="container-fluid feature pb-5">
+    <div class="container pb-5">
+        <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
+        </div>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.2s">
+            </div>
+            <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.4s">
+            </div>
+            <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.6s">
+            </div>
+            <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.8s">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 여백을 위한 부분 End -->
+
+<!-- 내 게시글 보기 start -->
+<div th:if="${session.loginId ne null}">
+    <div class="container-fluid service pb-5">
+        <div class="container pb-5">
+            <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
+                <h4 class="text-primary">My Answer</h4>
+                <h1 class="display-5 mb-4">나의 답변</h1>
+                <p class="mb-0"></p>
+            </div>
+
+            <div class="d-flex">
+                <!-- 메뉴 (고정된 왼쪽 사이드바) -->
+                <div class="btn-group-vertical" style="flex-shrink: 0; position: sticky;">
+                    <button type="button" id="postView" class="btn btn-primary">나의 질문</button>
+                    <button type="button" id="answerView" class="btn btn-primary">나의 답변</button>
+                </div>
+
+                <!-- 게시글 검색 및 목록 영역 -->
+                <div style="flex-grow: 1; padding-left: 20px;">
+                    <!-- 게시글 검색 -->
+                    <div class="mb-4">
+                        <div class="d-flex align-items-center">
+                            <!-- 검색 카테고리 -->
+                            <select id="category" class="form-control mr-2" style="max-width: 120px; font-size: 14px;">
+                                <option value="Content">내용</option>
+                            </select>
+
+                            <!-- 검색어 입력창 -->
+                            <input type="text" id="keyword" class="form-control mr-2" placeholder="검색어 입력"
+                                   style="max-width: 150px; font-size: 14px;"/>
+
+                            <!-- 검색 버튼 -->
+                            <button type="button" id="searchBtn" class="btn btn-primary"
+                                    style="padding: 5px 12px; font-size: 14px;">검색
+                            </button>
+
+                            <!-- 게시글 갯수 변경 -->
+                            <select id="limit" class="form-control ml-2" style="max-width: 100px; font-size: 14px;">
+                                <option value="5">5개씩</option>
+                                <option value="10">10개씩</option>
+                                <option value="20">20개씩</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- 내가 작성한 답변 목록 -->
+                    <table class="table table-hover" id="modiForm1">
+                        <thead>
+                        <tr>
+                            <th scope="col">번호</th>
+                            <th scope="col">내용</th>
+                            <th scope="col">채택</th>
+                            <th scope="col">추천수</th>
+                            <th scope="col">작성일</th>
+                            <th scope="col">수정일</th>
+                        </tr>
+                        </thead>
+                        <tr>
+                            <th scope="row">번호</th>
+                            <td>내용</td>
+                            <td>채택</td>
+                            <td>추천수</td>
+                            <td>작성일</td>
+                            <td>수정일</td>
+                        </tr>
+                    </table>
+
+                    <!-- 페이지 번호 -->
+                    <div id="numbering"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 내 게시글 보기 End -->
+
+<!-- Footer Start -->
+<div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
+    <div class="container py-5 border-start-0 border-end-0"
+         style="border: 1px solid; border-color: rgb(255, 255, 255, 0.08);">
+        <div class="row g-5">
+            <div class="col-md-6 col-lg-6 col-xl-4">
+                <div class="footer-item">
+                    <a href="index" class="p-0">
+                        <h4 class="text-white"><i class="fas fa-search-dollar me-3"></i>다다답</h4>
+                        <!-- <img src="img/logo.png" alt="Logo"> -->
+                    </a>
+                    <p class="mb-4"></p>
+                    <div class="d-flex">
+                        <a href="#" class="bg-primary d-flex rounded align-items-center py-2 px-3 me-2">
+                            <i class="fas fa-apple-alt text-white"></i>
+                            <div class="ms-3">
+                                <small class="text-white">Download on the</small>
+                                <h6 class="text-white">App Store</h6>
+                            </div>
+                        </a>
+                        <a href="#" class="bg-dark d-flex rounded align-items-center py-2 px-3 ms-2">
+                            <i class="fas fa-play text-primary"></i>
+                            <div class="ms-3">
+                                <small class="text-white">Get it on</small>
+                                <h6 class="text-white">Google Play</h6>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-xl-2">
+                <div class="footer-item">
+                    <h4 class="text-white mb-4">Quick Links</h4>
+                    <a href="#"><i class="fas fa-angle-right me-2"></i> About Us</a>
+                    <a href="#"><i class="fas fa-angle-right me-2"></i> 게시판</a>
+                    <a href="#"><i class="fas fa-angle-right me-2"></i> 링크 모음</a>
+                    <a href="#"><i class="fas fa-angle-right me-2"></i> 카테고리</a>
+                    <!--                        <a href="#"><i class="fas fa-angle-right me-2"></i> Blog</a>-->
+                    <!--                        <a href="#"><i class="fas fa-angle-right me-2"></i> Contact us</a>-->
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="footer-item">
+                    <h4 class="text-white mb-4">Support</h4>
+                    <a href="#"><i class="fas fa-angle-right me-2"></i> Privacy Policy</a>
+                    <a href="#"><i class="fas fa-angle-right me-2"></i> Terms & Conditions</a>
+                    <a href="#"><i class="fas fa-angle-right me-2"></i> Disclaimer</a>
+                    <a href="#"><i class="fas fa-angle-right me-2"></i> Support</a>
+                    <a href="#"><i class="fas fa-angle-right me-2"></i> FAQ</a>
+                    <a href="#"><i class="fas fa-angle-right me-2"></i> Help</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer End -->
+
+<!-- Copyright Start -->
+<div class="container-fluid copyright py-4">
+    <div class="container">
+        <div class="row g-4 align-items-center">
+            <div class="col-md-6 text-center text-md-start mb-md-0">
+                    <span class="text-body"><a href="#" class="border-bottom text-white"><i
+                            class="fas fa-copyright text-light me-2"></i>다다답</a>, All right reserved.</span>
+            </div>
+            <div class="col-md-6 text-center text-md-end text-body">
+                <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
+                <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
+                <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
+                Designed By <a class="border-bottom text-white" href="https://htmlcodex.com">HTML Codex</a>
+                Distributed By <a class="border-bottom text-white" href="https://themewagon.com">ThemeWagon</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Copyright End -->
+
+
+<!-- Back to Top -->
+<a href="#" class="btn btn-primary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>
+
+
+<!-- JavaScript Libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="lib/wow/wow.min.js"></script>
+<script src="lib/easing/easing.min.js"></script>
+<script src="lib/waypoints/waypoints.min.js"></script>
+<script src="lib/counterup/counterup.min.js"></script>
+<script src="lib/lightbox/js/lightbox.min.js"></script>
+<script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+
+<!-- Template Javascript -->
+<script src="js/main.js"></script>
+
+</div>
+<!-- Spinner End -->
+</body>
+
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+        crossorigin="anonymous"></script>
+<script>
+    // 로그아웃 클릭
+    $('#logout').click(() => {
+        location.href = "/mLogout";
+    });
+
+    $('#modiForm2').hide();
+
+    $('#modify').click(() => {
+        $('#modiForm2').show();
+        $('#modiForm1').hide();
+    });
+
+    // 내 프로필 가기 버튼
+    $('#myProfile').click(() => {
+        location.href = "/myProfile";
+    });
+
+    // 나의 질문 클릭
+    $('#postView').click(() => {
+        location.href = "/postView";
+    });
+
+    // 나의 답변 클릭
+    $('#answerView').click(() => {
+        location.href = "/answerView";
+    });
+
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    const mm = String(today.getMonth() + 1).padStart(2, '0'); // 월은 0부터 시작하므로 +1
+    const dd = String(today.getDate()).padStart(2, '0');
+
+    const currentDate = `${yyyy}-${mm}-${dd}`;
+
+    let list = [];
+    let page = 1;       // 페이지 번호
+    let limit = 5;      // 한페이지에 출력될 데이터 갯수
+    const block = 5;    // 한페이지에 출력될 페이지 갯수
+    let count = 0;      // 전체 데이터 갯수
+    let sId = $('#SId');
+
+    // 페이지 로딩 후 ajax로 게시글 불러오기
+    $(()=>{
+        $.ajax({
+            type : "post",
+            url : "/mAnswerList",
+            data : { "SId" : sId.val() },
+            dataType : "json",
+
+            success : (result) => {
+                list = result;
+                console.log(list);
+
+                // result : 게시글 목록
+                pagingList(page, list);
+
+            },
+            error : ()=>{
+                alert('answerList 통신 실패!');
+            }
+        });
+    });
+
+    function pagingList(page, list){
+        count = list.length;        // 전체 게시글 갯수
+
+        if(count > 0){
+            let maxPage = Math.ceil(count/limit);
+            if(page > maxPage){
+                page = maxPage;
+            }
+
+            let startRow = (page - 1) * limit;      // 0 5 10 15 ...
+            let endRow = page * limit - 1;          // 4 9 14 19 ...
+            if(endRow >= count){
+                endRow = count - 1;
+            }
+
+            let startPage = (Math.ceil(page/block)-1) * block + 1;  // 1 1 1 1 1  6  6  6  6  6 ..
+            let endPage = startPage + block - 1;                    // 5 5 5 5 5 10 10 10 10 10 ..
+            if(endPage > maxPage){
+                endPage = maxPage;
+            }
+
+            // <tr>
+            //     <th scope="row">번호</th>
+            //     <td>내용</td>
+            //     <td>채택</td>
+            //     <td>추천수</td>
+            //     <td>작성일</td>
+            //     <td>수정일</td>
+            // </tr>
+
+            let output = "";
+            for(let i=startRow; i<=endRow; i++){
+                output += `
+                <tr>
+                    <td>${answer.ANum}</td>
+                    <td></td>
+                    <td><a href="/pView/${member.sId}">${answer.PNum}</a>${answer.Content}</td>
+                    <td>${answer.Adopt}</td>
+                    <td>${answer.Arecomm}</td>
+                    <td>${answer.Create_At}</td>
+                    <td>${answer.Modify_At}</td>
+                </tr>
+            `;
+            }
+
+            $('tbody').empty();
+            $('tbody').append(output);
+
+            // numbering 페이징 처리
+            let pageNum = "";
+
+            // 현재 페이지에서 -1을 했을때 1보다 작으면 "1" 값을,
+            // 1보다 크거나 같으면 "page-1" 값을 prev 변수에 담는다
+            let prev = (page - 1 < 1 ? 1 : page - 1);
+            /*
+                if(page-1 < 1){
+                    prev = 1;
+                } else {
+                    prev = page - 1;
+                }
+             */
+
+            // 현재 페이지에서 +1을 했을때 maxPage보다 크거나 같으면 "maxPage" 값을,
+            // maxPage 값보다 작으면 "page+1" 값을 next 변수에 담는다.
+            let next = (page + 1 >= maxPage ? maxPage : page + 1);
+
+            // [이전]
+            if(page <= 1){
+                pageNum += `<span class="prev"> 이전 </span>`;
+            } else {
+                pageNum += `<a href="#" class="prev" data-page="${prev}"> 이전 </a>`;
+            }
+
+            // [번호]
+            for(let i=startPage; i<=endPage; i++){
+                if(page == i){
+                    pageNum += `<span class="iNum"> ${i} </span>`;
+                } else {
+                    pageNum += `<a href="#" class="iNum" data-page="${i}"> ${i} </a>`;
+                }
+            }
+
+            // [다음]
+            if(page >= maxPage){
+                pageNum += `<span class="next"> 다음 </span>`;
+            } else {
+                pageNum += `<a href="#" class="next" data-page="${next}"> 다음 </a>`;
+            }
+
+            $('#numbering').empty();
+            $('#numbering').append(pageNum);
+
+            $(document).on('click', '#numbering a', function(e){
+                page = parseInt($(this).data('page'));
+                pagingList(page, list);
+            });
+        } else {
+            $('tbody').empty();
+        }
+
+    }
+
+    // 게시글 갯수 변경
+    $('#limit').change(()=>{
+        page = 1;
+        limit = parseInt($('#limit').val());
+        pagingList(page, list);
+    });
+
+    // 게시글 검색
+    $('#searchBtn').click(()=>{
+        let category = $('#category').val();
+        let keyword = $('#keyword').val();
+
+        $.ajax({
+            type : "POST",
+            url : "searchList",
+            data : {
+                "category" : category,
+                "keyword" : keyword
+            },
+            dataType: "json",
+            success : (result) => {
+                list = result;
+                console.log(list);
+                pagingList(page, list);
+            },
+            error : ()=>{
+                alert('searchList 통신 실패!');
+            }
+        });
+    });
+
+</script>
+
+</html>

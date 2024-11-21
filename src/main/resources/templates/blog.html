@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:text-align="http://www.w3.org/1999/xhtml">
+
+<head>
+
+    <meta charset="utf-8">
+    <title>유머공간</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div th:insert="~{header}"></div>
+
+
+<!-- 인기급상승 -->
+<div class="container-fluid blog pb-5">
+
+    <div class="container pb-5">
+        <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
+            <h4 class="text-primary"></h4>
+            <br/>
+            <br/>
+            <h1 class="display-5 mb-4">인기급상승</h1>
+        </div>
+        <div class="owl-carousel blog-carousel wow fadeInUp" data-wow-delay="0.2s">
+            <div class="blog-item p-4">
+                <div class="blog-img mb-4">
+                    <img src="img/mbti.png" class="img-fluid blog-img-fixed" alt="">
+                    <div class="blog-title">
+                        <a href="https://www.16personalities.com/ko/%EB%AC%B4%EB%A3%8C-%EC%84%B1%EA%B2%A9-%EC%9C%A0%ED%98%95-%EA%B2%80%EC%82%AC" class="btn">Click</a>
+                    </div>
+                </div>
+                <a href="https://www.16personalities.com/ko/%EB%AC%B4%EB%A3%8C-%EC%84%B1%EA%B2%A9-%EC%9C%A0%ED%98%95-%EA%B2%80%EC%82%AC" class="h4 d-inline-block mb-3">MBTI 검사</a>
+            </div>
+            <div class="blog-item p-4">
+                <div class="blog-img mb-4">
+                    <img src="img/먼작귀테스트.jpg" class="img-fluid blog-img-fixed" alt="">
+                    <div class="blog-title">
+                        <a href="https://testmoa.com/chiikawa/" class="btn">Click</a>
+                    </div>
+                </div>
+                <a href="https://testmoa.com/chiikawa/" class="h4 d-inline-block mb-3">먼작귀테스트</a>
+            </div>
+            <div class="blog-item p-4">
+                <div class="blog-img mb-4">
+                    <img src="img/운세.jpg" class="img-fluid blog-img-fixed" alt="">
+                    <div class="blog-title">
+                        <a href="https://shinhanlife.sinbiun.com/unse/saju/saju.php?unse_code=A027" class="btn">Click</a>
+                    </div>
+                </div>
+                <a href="https://shinhanlife.sinbiun.com/unse/saju/saju.php?unse_code=A027" class="h4 d-inline-block mb-3">운세</a>
+            </div>
+            <div class="blog-item p-4">
+                <div class="blog-img mb-4">
+                    <img src="img/플래쉬게임.jpg" class="img-fluid blog-img-fixed" alt="">
+                    <div class="blog-title">
+                        <a href="https://vidkidz.tistory.com/" class="btn">Click</a>
+                    </div>
+                </div>
+                <a href="https://vidkidz.tistory.com/" class="h4 d-inline-block mb-3">플래시 게임</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 인기급상승 끝 -->
+
+
+
+<!-- 엔터테인먼트 모음 -->
+<div id="content-container" class="container-fluid service py-5">
+    <div class="container py-5">
+        <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
+            <h4 class="text-primary"></h4>
+            <h1 class="display-5 mb-4">엔터테인먼트</h1>
+            <br/>
+            <div id="page-container">
+            </div>
+            <!-- 페이지네이션 추가 -->
+            <div id="pagination-container" class="text-center"></div>
+        </div>
+    </div>
+    <script>
+        // 문단 리스트를 배열로 수집
+        const paragraphs = [
+            `<div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="service-item">
+                            <div class="service-img">
+                                <img src="img/티니핑.jpg" class="img-fluid blog-img-fixed" alt="Image">
+                            </div>
+                            <div class="rounded-bottom p-4">
+                                <a href="https://ktestone.com/catchTeeniepingQuiz/" class="h4 d-inline-block mb-4">티니핑 이름맞추기</a>
+                                <a class="btn btn-primary rounded-pill py-2 px-4" href="https://ktestone.com/catchTeeniepingQuiz/">Click</a>
+                            </div>
+                        </div>
+                    </div>`,
+            `<div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
+                        <div class="service-item">
+                            <div class="service-img">
+                                <img src="img/절대색감.jpg" class="img-fluid blog-img-fixed" alt="Image">
+                            </div>
+                            <div class="rounded-bottom p-4">
+                                <a href="https://ktestone.com/colorPickerEasy/" class="h4 d-inline-block mb-4">색감 테스트</a>
+                                <a class="btn btn-primary rounded-pill py-2 px-4" href="https://ktestone.com/colorPickerEasy/">Click</a>
+                            </div>
+                        </div>
+                    </div>`,
+            `<div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
+                        <div class="service-item">
+                            <div class="service-img">
+                                <img src="img/아이큐.jpg" class="img-fluid blog-img-fixed" alt="Image">
+                            </div>
+                            <div class="rounded-bottom p-4">
+                                <a href="https://kr.vonvon.me/quiz/19504" class="h4 d-inline-block mb-4">IQ테스트</a>
+                                <a class="btn btn-primary rounded-pill py-2 px-4" href="https://kr.vonvon.me/quiz/19504">Click</a>
+                            </div>
+                        </div>
+                    </div>`,
+            `<div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.8s">
+                        <div class="service-item">
+                            <div class="service-img">
+                                <img src="img/해리포터.jpg" class="img-fluid blog-img-fixed" alt="Image">
+                            </div>
+                            <div class="rounded-bottom p-4">
+                                <a href="https://kr.vonvon.me/quiz/350" class="h4 d-inline-block mb-4">해리포터기숙사테스트</a>
+                                <a class="btn btn-primary rounded-pill py-2 px-4" href="https://kr.vonvon.me/quiz/350">Click</a>
+                            </div>
+                        </div>
+                    </div>`,
+            `<div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="service-item">
+                            <div class="service-img">
+                                <img src="img/수면.jpg" class="img-fluid blog-img-fixed" alt="Image">
+                            </div>
+                            <div class="rounded-bottom p-4">
+                                <a href="https://kr.vonvon.me/quiz/19419" class="h4 d-inline-block mb-4">숙면 MBTI 테스트</a>
+                                <a class="btn btn-primary rounded-pill py-2 px-4" href="https://kr.vonvon.me/quiz/19419">Click</a>
+                            </div>
+                        </div>
+                    </div>`,
+            `<div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
+                        <div class="service-item">
+                            <div class="service-img">
+                                <img src="img/이름궁합.jpg" class="img-fluid blog-img-fixed" alt="Image">
+                            </div>
+                            <div class="rounded-bottom p-4">
+                                <a href="https://kr.vonvon.me/quiz/19512" class="h4 d-inline-block mb-4">재미로보는 이름 궁합</a>
+                                <a class="btn btn-primary rounded-pill py-2 px-4" href="https://kr.vonvon.me/quiz/19512">Click</a>
+                            </div>
+                        </div>
+                    </div>`,
+            `<div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
+                        <div class="service-item">
+                            <div class="service-img">
+                                <img src="img/연애 타로.jpg" class="img-fluid blog-img-fixed" alt="Image">
+                            </div>
+                            <div class="rounded-bottom p-4">
+                                <a href="https://www.banggooso.com/gl/73/" class="h4 d-inline-block mb-4">연애 타로 테스트</a>
+                                <a class="btn btn-primary rounded-pill py-2 px-4" href="https://www.banggooso.com/gl/73/">Click</a>
+                            </div>
+                        </div>
+                    </div>`,
+            `<div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.8s">
+                        <div class="service-item">
+                            <div class="service-img">
+                                <img src="img/운명타로.jpg" class="img-fluid blog-img-fixed" alt="Image">
+                            </div>
+                            <div class="rounded-bottom p-4">
+                                <a href="https://poomang.com/detail/izqfv" class="h4 d-inline-block mb-4">운명의 타로</a>
+                                <a class="btn btn-primary rounded-pill py-2 px-4" href="https://poomang.com/detail/izqfv">Click</a>
+                            </div>
+                        </div>
+                    </div>`,
+            `<div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="service-item">
+                            <div class="service-img">
+                                <img src="img/아우라.jpg" class="img-fluid blog-img-fixed" alt="Image">
+                            </div>
+                            <div class="rounded-bottom p-4">
+                                <a href="https://poomang.com/detail/jmrhr" class="h4 d-inline-block mb-4">나의 아우라 찾기</a>
+                                <a class="btn btn-primary rounded-pill py-2 px-4" href="https://poomang.com/detail/jmrhr">Click</a>
+                            </div>
+                        </div>
+                    </div>`,
+            `<div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="service-item">
+                            <div class="service-img">
+                                <img src="img/MBTI.jpg" class="img-fluid blog-img-fixed" alt="Image">
+                            </div>
+                            <div class="rounded-bottom p-4">
+                                <a href="https://www.16personalities.com/ko/%EB%AC%B4%EB%A3%8C-%EC%84%B1%EA%B2%A9-%EC%9C%A0%ED%98%95-%EA%B2%80%EC%82%AC" class="h4 d-inline-block mb-4">MBTI 검사</a>
+                                <a class="btn btn-primary rounded-pill py-2 px-4" href="https://www.16personalities.com/ko/%EB%AC%B4%EB%A3%8C-%EC%84%B1%EA%B2%A9-%EC%9C%A0%ED%98%95-%EA%B2%80%EC%82%AC">Click</a>
+                            </div>
+                        </div>
+                    </div>`,
+            `<div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="service-item">
+                            <div class="service-img">
+                                <img src="img/먼작귀테스트.jpg" class="img-fluid blog-img-fixed" alt="Image">
+                            </div>
+                            <div class="rounded-bottom p-4">
+                                <a href="https://testmoa.com/chiikawa/" class="h4 d-inline-block mb-4">먼작귀테스트</a>
+                                <a class="btn btn-primary rounded-pill py-2 px-4" href="https://testmoa.com/chiikawa/">Click</a>
+                            </div>
+                        </div>
+                    </div>`,
+            `<div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="service-item">
+                            <div class="service-img">
+                                <img src="img/운세.jpg" class="img-fluid blog-img-fixed" alt="Image">
+                            </div>
+                            <div class="rounded-bottom p-4">
+                                <a href="https://shinhanlife.sinbiun.com/unse/saju/saju.php?unse_code=A027" class="h4 d-inline-block mb-4">운세</a>
+                                <a class="btn btn-primary rounded-pill py-2 px-4" href="https://shinhanlife.sinbiun.com/unse/saju/saju.php?unse_code=A027">Click</a>
+                            </div>
+                        </div>
+                    </div>`,
+            `<div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="service-item">
+                            <div class="service-img">
+                                <img src="img/플래쉬게임.jpg" class="img-fluid blog-img-fixed" alt="Image">
+                            </div>
+                            <div class="rounded-bottom p-4">
+                                <a href="https://vidkidz.tistory.com/" class="h4 d-inline-block mb-4">플래시 게임</a>
+                                <a class="btn btn-primary rounded-pill py-2 px-4" href="https://vidkidz.tistory.com/">Click</a>
+                            </div>
+                        </div>
+                    </div>`
+        ];
+
+        const pageContainer = document.getElementById('page-container');
+        const paginationContainer = document.getElementById('pagination-container');
+        const itemsPerPage = 6;  // 한 페이지당 표시할 항목 수
+        let currentPage = 1;     // 현재 페이지 번호
+
+        function renderPage(page) {
+            // 페이지 컨테이너 초기화
+            pageContainer.innerHTML = '';
+            let output = '';
+
+            // 시작 인덱스와 끝 인덱스 계산
+            const startIndex = (page - 1) * itemsPerPage;
+            const endIndex = Math.min(startIndex + itemsPerPage, paragraphs.length);
+
+            //pageContainer.innerHTML +=`<div class="row g-4">`
+            output += `<div class="row g-4">`;
+
+            // 해당 페이지의 문단 추가
+            for (let i = startIndex; i < endIndex; i++) {
+                //pageContainer.innerHTML += paragraphs[i];
+                output += `${paragraphs[i]}`;
+            }
+
+            output += ` </div>`;
+            //pageContainer.innerHTML +=` </div>`
+            pageContainer.innerHTML = output;
+
+            console.log(output);
+            // 페이지네이션 UI 생성
+            renderPagination();
+        }
+
+        function renderPagination() {
+            // 전체 페이지 수 계산
+            const totalPages = Math.ceil(paragraphs.length / itemsPerPage);
+            paginationContainer.innerHTML = '';
+
+            // 이전 버튼 추가
+            if (currentPage > 1) {
+                const prevButton = document.createElement('button');
+                prevButton.innerText = '이전';
+                prevButton.className = 'btn btn-secondary mx-1';
+                prevButton.onclick = () => {
+                    currentPage--;
+                    renderPage(currentPage);
+                };
+                paginationContainer.appendChild(prevButton);
+            }
+
+            // 페이지 번호 버튼 추가
+            for (let i = 1; i <= totalPages; i++) {
+                const pageButton = document.createElement('button');
+                pageButton.innerText = i;
+                pageButton.className = `btn ${i === currentPage ? 'btn-primary' : 'btn-secondary'} mx-1`;
+                pageButton.onclick = () => {
+                    currentPage = i;
+                    renderPage(currentPage);
+                };
+                paginationContainer.appendChild(pageButton);
+            }
+
+            // 다음 버튼 추가
+            if (currentPage < totalPages) {
+                const nextButton = document.createElement('button');
+                nextButton.innerText = '다음';
+                nextButton.className = 'btn btn-secondary mx-1';
+                nextButton.onclick = () => {
+                    currentPage++;
+                    renderPage(currentPage);
+                };
+                paginationContainer.appendChild(nextButton);
+            }
+        }
+
+        // 초기 페이지 렌더링
+        renderPage(currentPage);
+
+    </script>
+
+    <!-- 엔터테인먼트 모음 -->
+
+<!--푸터시작-->
+    <div th:replace="footer :: footer"></div>
+<!--    푸터끝-->
+
+    <!-- Copyright Start -->
+    <div class="container-fluid copyright py-4">
+        <div class="container">
+            <div class="row g-4 align-items-center">
+                <div class="col-md-6 text-center text-md-start mb-md-0">
+                    <span class="text-body"><a href="#" class="border-bottom text-white"><i class="fas fa-copyright text-light me-2"></i>Your Site Name</a>, All right reserved.</span>
+                </div>
+                <div class="col-md-6 text-center text-md-end text-body">
+                    <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
+                    <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
+                    <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
+                    Designed By <a class="border-bottom text-white" href="https://htmlcodex.com">HTML Codex</a> Distributed By <a class="border-bottom text-white" href="https://themewagon.com">ThemeWagon</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Copyright End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-primary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
